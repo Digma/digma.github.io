@@ -22,6 +22,7 @@
     <meta name="theme-color" content="#ffffff">
 
     <link href="main.css?v=0.1" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body class="page--home" id="home">
@@ -35,14 +36,20 @@
 
             <div class="o-grid-col o-grid-col--start-1 o-grid-col--span-4">
                 <section class="c-header__logo">
-                    <h1><a aria-label="Gaël - homepage link" role="banner" href="#home">Gaël</a></h1>
+                    <div class="c-header__name">
+                        <h1><a aria-label="Gaël - homepage link" role="banner" href="#home">Gaël Grosch</a></h1>
+                        (<div class="social_icon">
+                            <a href="https://www.linkedin.com/in/gaelgrosch/" class="fa fa-linkedin"></a>,
+                            <a href="https://www.instagram.com/g_a__e___l/" class="fa fa-instagram"></a>
+                        </div>)
+                    </div>
                     <p></p>
                     <p>Hello! I’m a digital scientist living in Switzerland. I enjoy digging through datasets, cooking, following arts and technology</p>
                 </section>
             </div>
 
             <div class="o-grid-col o-grid-col--start-1">
-                <nav class="c-header__nav u-violet-txt" role="navigation" aria-label="Main navigation">
+                <nav class="c-header__nav" role="navigation" aria-label="Main navigation">
                     <ul class="c-nav-list">
                         <li class="c-nav-list__item c-nav-item--info">
                             <a href="#conferences">Conferences</a> </li>
@@ -116,7 +123,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <div class="c-container c-container--projects u-warm--mid-bg" id="projects">

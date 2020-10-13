@@ -780,12 +780,33 @@ h3,h4 {
 
 .c-header {
     width: 100%;
-    padding-top: 0.2em
+    padding-top: 0.2em;
+    padding-bottom: 10em;
+}
+
+.c-header .c-header__logo h1 {
+    margin-right: 10px
 }
 
 .c-header .c-header__logo a {
     text-decoration: none;
-    transition: none
+    transition: none;
+}
+
+.c-header .c-header__logo .c-header__name {
+    display: flex;
+    margin-right: 10px
+}
+
+.c-header .c-header__logo .social_icon {
+    font-size: 0.8em;
+    margin-left: 2px;
+    margin-top: 3px;
+    margin-right: 2px;
+}
+
+.c-header .c-header__logo .social_icon a {
+    color: #525252
 }
 
 .c-header__jump {
@@ -854,7 +875,8 @@ h3,h4 {
 .c-nav-list .c-nav-list__item a {
     text-decoration: none;
     opacity: 0.6;
-    transition: 0.3s opacity ease
+    transition: 0.3s opacity ease;
+    font-weight: 700;
 }
 
 .c-nav-list .c-nav-list__item:hover a {
