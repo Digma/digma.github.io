@@ -31,9 +31,9 @@ navigation:
   - text: Home
     url: /
   - text: Blog
-    url: /blog/
+    url: /blog
   - text: About
-    url: /about/
+    url: /about
 
 # The shortname for your Disqus site to enable comments.
 disqus: gael-io.disqus.com
