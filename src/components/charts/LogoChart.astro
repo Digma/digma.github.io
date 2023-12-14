@@ -1,0 +1,64 @@
+<div id="lineChart" class="ml-[-6.2rem] mt-[-2.4rem] mr-[-2rem]"></div>
+<script>
+  import ApexCharts from "apexcharts";
+  var options = {
+    series: [100, 25, 20, 60],
+    chart: {
+      height: 150,
+      type: "radialBar",
+      animations: {
+        enabled: true,
+        dynamicAnimation: {
+          speed: 300,
+        },
+      },
+      toolbar: {
+        show: false,
+      },
+    },
+    colors: ["#1F78B4", "#A6CEE3", "#B2DF8A", "#fb9a99", "#33A02C"],
+    plotOptions: {
+      radialBar: {
+        startAngle: -90,
+        endAngle: -50,
+        track: {
+          background: "#FFFFFF",
+          margin: 1,
+        },
+        hollow: {
+          size: "50%",
+        },
+        dataLabels: {
+          name: {
+            show: false,
+          },
+          value: {
+            show: false,
+          },
+        },
+      },
+    },
+    legend: {
+      show: false,
+    },
+    tooltip: {
+      enabled: false,
+    },
+    states: {
+      hover: {
+        filter: {
+          type: "none",
+        },
+      },
+      active: {
+        // Optional: Disable changes on click as well
+        filter: {
+          type: "none",
+        },
+      },
+    },
+  };
+
+  var chart = new ApexCharts(document.querySelector("#lineChart"), options);
+  chart.render();
+</script>
