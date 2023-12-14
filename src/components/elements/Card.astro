@@ -1,0 +1,29 @@
+---
+import { getImage } from "astro:assets";
+export interface Props {
+    title: string;
+    body: string;
+    href: string;
+    backgroundColor?: string;
+    backgroundImage?: ImageMetadata;
+}
+
+const { href, title, body, backgroundColor, backgroundImage } = Astro.props;
+const optimizedBackgroundImage = backgroundImage ? await getImage({ src: backgroundImage }) : null
+---
+<a
+    href={href}
+    class="block w-full p-2 min-h-[10rem] bg-white border border-gray-200 bg-contain rounded-md shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+    style={{
+        background: backgroundImage ? `linear-gradient(rgba(255,255,255,.8), rgba(255,255,255,.5)),url(${optimizedBackgroundImage.src})` : 'none',
+        backgroundColor: backgroundColor || '#000000',
+        backgroundSize: "100% auto", //contain"
+    }}
+>
+    <h5
+        class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white"
+    >
+        {title}
+    </h5>
+    <p class="font-normal text-sm text-gray-900 dark:text-gray-200">{body}</p>
+</a>

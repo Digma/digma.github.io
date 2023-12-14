@@ -4,14 +4,14 @@ import { SITE_TITLE } from '../consts';
 import Chart from "./charts/LogoChart.astro";
 ---
 
-<header class="max-w-[1100px] w-[calc(100%-10em)] pb-[1rem]">
+<header class="max-w-[1024px] w-[calc(80%)] pb-[1rem]">
 	<nav>
 		<div class="flex items-center mt-[2.5rem]">
-			<Chart />
-			<h2 class="site-title"><a class="ml-[-8.5rem] font-bold text-slate-950 leading-5 tracking-tight" href="/">{SITE_TITLE}</a></h2>
+			<h2 class="site-title"><a class="font-bold text-slate-950 leading-5 tracking-tight" href="/">{SITE_TITLE}</a></h2>
 		</div>
-		<div class="internal-links mt-[2rem]">
+		<div class="flex internal-links justify-between mt-[2rem]">
 			<HeaderLink href="/">About</HeaderLink>
+			<HeaderLink href="/">/</HeaderLink>
 			<HeaderLink href="/blog">Blog</HeaderLink>
 		</div>
 	</nav>
@@ -19,6 +19,7 @@ import Chart from "./charts/LogoChart.astro";
 <style>
 	header {
 		margin: 0 auto;
+		margin-bottom: 2rem;
 	}
 	.site-title a {
 		font-size: 1.5em;

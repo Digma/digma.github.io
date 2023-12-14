@@ -1,100 +1,213 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { Image } from "astro:assets";
 import { Icon } from "astro-icon";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Card from "../components/elements/Card.astro";
+
+// Skill Charts
+import SkillCards from "../components/elements/SkillCards.astro";
+
+// Images
+import ImageAMLD from "../images/conference_organizer_amld.png";
+import ImageAuthor from "../images/gael.webp";
+import ImageLLMArticle from "../images/article_llm.png";
+import ImageUnit8Carbon from "../images/article_unit8_co2.png";
+import ImageClimateHackathon from "../images/article_climate_hackathon.png";
+import ImageHackJunction from "../images/article_hackjunction.png";
+import ImageUnit8Conference from "../images/conference_unit8.png";
+import ImageSDSConference from "../images/conference_sds.png";
+import ImageEuroPythonConference from "../images/conference_europython.png";
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body class="bg-white">
-		<Header title={SITE_TITLE} />
-		
-		<main class="max-w-[1100px] w-[calc(100%-10em)] mt-[3rem]">
-			<div class="flex">
-				<h1 class="w-[600px] text-gray-600 text-xl italic">“Hello! I’m a digital scientist living in Switzerland. I enjoy digging through datasets, cooking, following arts and technology„</h1>
+<BaseLayout>
+	<main class="max-w-[1024px] w-[calc(80%)]">
+		<div class="flex flex-row grid grid-cols-1 md:grid-cols-2 justify-between">
+			<div class="flex flex-col gap-4  max-w-[600px]">
+				<!--<h1 class="text-black font-semibold text-xl italic">Hi there 👋</h1>-->
+				<p class="text-black text-base italic mb-0">
+					I am an independent developer with 8 years of industry
+					experience focusing on building products using data and
+					ML.
+				</p>
+				<p class="text-black text-base italic mb-0">
+					Previously, I was Data scientist and
+					Engagement Lead at <a href="https://unit8.com">Unit8.com</a
+					>. working on high-impact data projects, from
+					optimizing factories, forecasting supply chain or building
+					Azure OpenAI use-cases. During my time, the
+					company grew from 10 to 110 people in about 5 years (<a
+						href="https://www.ft.com/ft1000-2022"
+						>2022 Fastest growing Swiss Company</a
+					>).
+				</p>
+				<p class="text-black text-base italic">
+					Before that, I was a Data scientist and Product Owner at
+					Swisscom where I lead the development of a monitoring
+					platform. Finally, I have a Master degree from <a
+						href="https://www.epfl.ch/">EPFL</a
+					>.
+				</p>
 			</div>
-			<section
-				class="flex items-start justify-between flex-col sm:flex-row dark:text-light"
-			>
-				<h3 class="text-xl w-[20rem] mt-[4.0rem] font-black">
-					EXPERIENCE
-				</h3>
-				<div class="w-full">
-					<div class="my-16">
-						<div
-							class="flex justify-between items-center flex-wrap"
-						>
-							<h3 class="text-xl font-semibold mb-0">Data Scientist & Engagement Lead, Unit8</h3>
-							<p class="text-base mb-0 text-gray-500 dark:text-gray">
-								Jan 2019 - Dec 2023
-							</p>
-						</div>
-						<span
-							class="iconify"
-							data-icon="mdi:map-marker"
-							data-inline="false"></span>
-						<p class="text-base text-cyan-600 mt-1">
-							<Icon
-								class="h-[1rem] inline mt-[-0.2rem] ml-[-0.2rem] mr-[0.2rem]"
-								pack="mdi"
-								name="map-marker"
-							/>Lausanne, Switzerland
+			<Image
+				class="rounded-full w-[220px] h-[220px] mr-auto ml-auto md:mr-0"
+				src={ImageAuthor}
+				alt="Gaël Grosch"
+			/>
+		</div>
+		<section
+			class="flex items-start justify-between flex-col sm:flex-row dark:text-light"
+		>
+			<h3 class="text-xl w-[20rem] mt-[4.0rem] font-black">EXPERIENCE</h3>
+			<div class="w-full">
+				<div class="my-16">
+					<div class="flex justify-between items-center flex-wrap">
+						<h3 class="text-xl font-semibold mb-0">
+							Data Scientist & Engagement Lead, Unit8
+						</h3>
+						<p class="text-base mb-0 text-gray-500 dark:text-gray">
+							Jan 2019 - Dec 2023
 						</p>
-						<ul class="mt-1">
-							<li class="text-base dark:text-gray">
-								- Developing screens and UI components for the
-								web application using React and Tailwind.
-							</li><li class="text-base mt-2 dark:text-gray">
-								- Fixing UI issues and integrating backend APIs
-								with Redux Saga.
-							</li>
-						</ul>
 					</div>
-					<div class="my-16">
-						<div
-							class="flex justify-between items-center flex-wrap"
-						>
-							<h3 class="text-xl font-semibold mb-0">Senior Data Scientist, Swisscom</h3>
-							<p class="text-base mb-0 text-gray-500 dark:text-gray">
-								Sep 2015 - Dec 2018
-							</p>
-						</div>
-						<span
-							class="iconify"
-							data-icon="mdi:map-marker"
-							data-inline="false"></span>
-						<p class="text-base text-cyan-600 mt-1">
-							<Icon
-								class="h-[1rem] inline mt-[-0.2rem] ml-[-0.2rem] mr-[0.2rem]"
-								pack="mdi"
-								name="map-marker"
-							/>Lausanne, Switzerland
-						</p>
-						<ul class="mt-1">
-							<li class="text-base dark:text-gray">
-								- Developing screens and UI components for the
-								web application using React and Tailwind.
-							</li><li class="text-base mt-2 dark:text-gray">
-								- Fixing UI issues and integrating backend APIs
-								with Redux Saga.
-							</li>
-						</ul>
-					</div>
+					<span
+						class="iconify"
+						data-icon="mdi:map-marker"
+						data-inline="false"></span>
+					<p class="text-base text-cyan-600 mt-1">
+						<Icon
+							class="h-[1rem] inline mt-[-0.2rem] ml-[-0.2rem] mr-[0.2rem]"
+							pack="mdi"
+							name="map-marker"
+						/>Lausanne, Switzerland
+					</p>
+					<ul class="mt-1">
+						<li class="text-base dark:text-gray mb-[1rem]">
+							Below are some of the projects I worked on during my time at Unit8:
+						</li>
+						<li class="text-base mt-2 dark:text-gray">
+							<b>• Azure OpenAI Solution Accelerator</b> <span class="text-gray-500">(Internal to Unit8)</span><br />
+							Led the creation of an Azure OpenAI accelerator, sold to 6+ client, from pitch to 1<sup>st</sup> client in 3 months
+						</li>
+						<li class="text-base mt-2 dark:text-gray">
+							<b>• Factory Production Optimization</b> <span class="text-gray-500">(for a Global Pharmaceutical Company)</span><br />
+							Implemented 11% OEE Improvement (representing 10M+ CHF per year)
+						</li>
+						<li class="text-base mt-2 dark:text-gray">
+							<b>• ML-powered Search Engine</b> <span class="text-gray-500">(for a Global Chemical Company)</span><br />
+							New internal product grown from 0 to 100+ weekly users
+						</li>
+						<li class="text-base mt-2 dark:text-gray">
+							<b>• Make Unit8 Carbon Neutral</b> <span class="text-gray-500">(Internal to Unit8)</span><br />
+							Led an internal initiative to make the company track, reduce and compensate its CO<sup>2</sup> emissions
+						</li>
+					</ul>
 				</div>
-			</section>
-			<section
-				class="flex items-start justify-between flex-col sm:flex-row dark:text-light"
-			>
-				<h3 class="text-xl w-[20rem] mt-[4.0rem] font-black">
-					PROJECTS
-				</h3>
-			</section>
-		</main>
-		<Footer />
-	</body>
-</html>
+				<div class="my-16">
+					<div class="flex justify-between items-center flex-wrap">
+						<h3 class="text-xl font-semibold mb-0">
+							Senior Data Scientist, Swisscom
+						</h3>
+						<p class="text-base mb-0 text-gray-500 dark:text-gray">
+							Sep 2015 - Dec 2018
+						</p>
+					</div>
+					<span
+						class="iconify"
+						data-icon="mdi:map-marker"
+						data-inline="false"></span>
+					<p class="text-base text-cyan-600 mt-1">
+						<Icon
+							class="h-[1rem] inline mt-[-0.2rem] ml-[-0.2rem] mr-[0.2rem]"
+							pack="mdi"
+							name="map-marker"
+						/>Lausanne, Switzerland
+					</p>
+					<ul class="mt-1">
+						<li class="text-base mt-2 dark:text-gray">
+							<b>• Mobile Network Monitoring Platform</b> <span class="text-gray-500"></span><br />
+							Product owner and Lead developer of the platform, grew from 0 to 80 users (network engineers)
+						</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		<section
+			class="flex items-start justify-between flex-col sm:flex-row dark:text-light"
+		>
+			<h3 class="text-xl w-[20rem] mt-[4.0rem] font-black">SKILLS</h3>
+		</section>
+		<section
+			class="flex items-start gap-8 grid grid-cols-1 md:grid-cols-2 justify-between flex-col sm:flex-row dark:text-light"
+		>
+			<SkillCards />
+		</section>
+		<section
+			class="flex items-start justify-between flex-col sm:flex-row dark:text-light"
+		>
+			<h3 class="text-xl w-[20rem] mt-[4.0rem] mb-[1rem] font-black">ARTICLE & PROJECTS</h3>
+		</section>
+		<section
+			class="flex items-start gap-2 grid grid-cols-1 md:grid-cols-2 justify-between flex-col sm:flex-row dark:text-light"
+		>
+			<Card
+				href="https://unit8.com/resources/a-new-era-of-ai-a-practical-guide-to-large-language-models/"
+				title="Practical Guide to LLMs (2023)"
+				body="An in-depth look of how to use Large Language models in practice"
+				backgroundImage={ImageLLMArticle}
+			/>
+			<Card
+				href="https://unit8.com/resources/myclimate-carbon-neutral-company-unit8/"
+				title="Unit8 Carbon Neutral (2022)"
+				body="Our Journey to making Unit8 Carbon Neutral"
+				backgroundImage={ImageUnit8Carbon}
+			/>
+			<Card
+				href="https://devpost.com/software/unit8-climate"
+				title="Microsoft Climate Hackathon - Winner (2021)"
+				body="Detecting Methane leaks using satellite images"
+				backgroundImage={ImageClimateHackathon}
+			/>
+			<Card
+				href="https://medium.com/unit8-machine-learning-publication/how-to-win-in-the-largest-hackathon-in-europe-1ccd82716f57"
+				title="Hackjunction Hackathon - 2nd place (2019)"
+				body="Detecting Free Parking places using Computer Vision"
+				backgroundImage={ImageHackJunction}
+			/>
+		</section>
+		<section
+			class="flex items-start justify-between flex-col sm:flex-row dark:text-light"
+		>
+			<h3 class="text-xl w-[20rem] mt-[4.0rem] mb-[1rem] font-black">
+				CONFERENCES
+			</h3>
+		</section>
+		<section
+			class="flex items-start gap-2 grid grid-cols-1 md:grid-cols-2 justify-between flex-col sm:flex-row dark:text-light"
+		>
+			<Card
+				href="https://unit8.com/data-connect-breakfast/"
+				title="Unit8 Data Connect - Presenter (2023)"
+				body="Presenting GenAI topics at the Unit8 annual Data Connect event"
+				backgroundImage={ImageUnit8Conference}
+			/>
+			<Card
+				href="https://sds2023.ch/forecasting-and-meta-learning"
+				title="SDS - Workshop Organizer (2023)"
+				body="Organizer of a Darts workshop at the Swiss Conference on Data Science"
+				backgroundImage={ImageSDSConference}
+			/>
+			<Card
+				href="https://medium.com/unit8-machine-learning-publication/ai-manufacturing-key-take-aways-from-the-applied-machine-learning-days-conference-2d8e879f3110"
+				title="AMLD - Track Organizer (2022)"
+				body="Organizer of the AI & Manufacturing Track"
+				backgroundImage={ImageAMLD}
+			/>
+			<Card
+			href="https://ep2021.europython.eu/talks/5KySKcS-darts-unifying-time-series-forecasting-models-from-arima-to-deep-learning/"
+			title="EuroPython - Presenter (2021)"
+			body="Presenting fast and easy development of forecasting models in Python"
+			backgroundImage={ImageEuroPythonConference}
+		/>
+			
+		</section>
+	</main>
+</BaseLayout>

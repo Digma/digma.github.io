@@ -31,7 +31,7 @@ body {
 }
 main {
 	width: 720px;
-	max-width: calc(100% - 10em);
+	max-width: calc(80%);
 	margin: auto;
 }
 h1,

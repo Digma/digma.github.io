@@ -1,0 +1,24 @@
+---
+import SkillChartTech from "../charts/SkillChartTech.astro";
+import SkillChartBusiness from "../charts/SkillChartBusiness.astro";
+---
+
+
+<div class="flex flex-col">
+    <h2 class="text-xl text-gray-500 font-bold">Technical</h2>
+    <div class="flex items-center text-base">
+        <p>My heart is with Data Science (pandas, scikit-learn, torch) but in practice 90% of my time is spend with infrastructure (from Docker to AWS and Azure) and data engineering (Spark & Palantir Foundry)</p>
+    </div>
+    <div class="flex justify-center">
+        <SkillChartTech />
+    </div>
+</div>
+<div class="flex flex-col">
+    <h2 class="text-xl text-gray-500 font-bold">Personal</h2>
+    <div class="flex items-center text-base">
+        <p>Through my product and consulting experience as well as the project exposure to senior management, I had to develop many skills ranging from product management, to clear and crisp communication or leading team-members</p>
+    </div>
+    <div class="flex justify-center">
+        <SkillChartBusiness />
+    </div>
+</div>

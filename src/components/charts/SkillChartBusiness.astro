@@ -1,0 +1,78 @@
+---
+
+---
+
+<div id="radarChartBusiness" class="mt-[-1.5rem] p-[-2rem] ml-[-4rem] mr-[-1rem] mb-[-3rem]"></div>
+<script>
+    import ApexCharts from "apexcharts";
+    var options = {
+        chart: {
+            width: "550px",
+            type: "radar",
+            animations: {
+                enabled: false,
+            },
+            fontFamily: "Outfit, sans-serif",
+            toolbar: {
+                show: false,
+            },
+        },
+        series: [
+            {
+                name: "Radar Series 1",
+                data: [90, 80, 70, 65, 40],
+            },
+        ],
+        labels: ["Product Mgmt.", "Agile/Scrum", "Communication", "Leadership", "Design"],
+        fill: {
+            opacity: 1,
+            type: "gradient",
+            gradient: {},
+            color: "#f8f8f8",
+        },
+        grid: {
+            show: false,
+        },
+        legend: {
+            show: false,
+        },
+        stroke: {
+            show: false,
+            fill: "solid",
+        },
+        markers: {
+            size: 0,
+            hover: {
+                size: 0,
+            },
+        },
+        tooltip: {
+            enabled: false,
+        },
+        yaxis: {
+            show: false,
+        },
+        dataLabels: {
+            enabled: false,
+        },
+        plotOptions: {
+            radar: {
+                polygons: {
+                    strokeColor: "#e8e8e8",
+                    fill: {
+                        colors: ["#f8f8f8", "#fff"],
+                    },
+                },
+            },
+        },
+        theme: {
+            palette: "palette5",
+        },
+    };
+
+    var chart = new ApexCharts(
+        document.querySelector(`#radarChartBusiness`),
+        options,
+    );
+    chart.render();
+</script>
