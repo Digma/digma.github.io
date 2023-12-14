@@ -1,62 +1,65 @@
 ---
-import HeaderLink from './HeaderLink.astro';
-import { SITE_TITLE } from '../consts';
+import HeaderLink from "./HeaderLink.astro";
+import { SITE_TITLE } from "../consts";
 import Chart from "./charts/LogoChart.astro";
 ---
 
-<header class="max-w-[1024px] w-[calc(80%)] pb-[1rem]">
-	<nav>
-		<div class="flex items-center mt-[2.5rem]">
-			<h2 class="site-title"><a class="font-bold text-slate-950 leading-5 tracking-tight" href="/">{SITE_TITLE}</a></h2>
-		</div>
-		<div class="flex internal-links justify-between mt-[2rem]">
-			<HeaderLink href="/">About</HeaderLink>
-			<HeaderLink href="/">/</HeaderLink>
-			<HeaderLink href="/blog">Blog</HeaderLink>
-		</div>
-	</nav>
+<header class="max-w-[1024px] w-[calc(80%)] pb-[2rem]">
+  <nav>
+    <div class="flex items-center mt-[2.5rem]">
+      <h2 class="site-title">
+        <a class="font-bold text-slate-950 leading-5 tracking-tight" href="/"
+          >{SITE_TITLE}</a>
+      </h2>
+    </div>
+    <div class="flex internal-links justify-between mt-[2rem]">
+      <HeaderLink href="/">About</HeaderLink>
+      <HeaderLink href="/">/</HeaderLink>
+      <HeaderLink href="/blog">Blog</HeaderLink>
+    </div>
+  </nav>
 </header>
 <style>
-	header {
-		margin: 0 auto;
-		margin-bottom: 2rem;
-	}
-	.site-title a {
-		font-size: 1.5em;
-		font-family: 'Oswald', sans-serif;
-	}
-	h2 {
-		font-size: 1em;
-	}
+  header {
+    margin: 0 auto;
+    margin-bottom: 2rem;
+  }
+  .site-title a {
+    font-size: 1.5em;
+    font-family: "Oswald", sans-serif;
+  }
+  h2 {
+    font-size: 1em;
+  }
 
-	h2 a,
-	h2 a.active {
-		text-decoration: none;
-	}
-	nav {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
-	.internal-links a {
-		padding-left: 0.5em;
-		color: var(--gray-light);
-		/* border-bottom: 4px solid transparent;*/
-		text-decoration: none;
-	}
-	.internal-links a.active {
-		text-decoration: none;
-		color: var(--gray-dark);
-		font-weight: 600;
-	}
-	.social-links,
-	.social-links a {
-		display: flex;
-		padding-right: 0.2em;
-	}
-	@media (max-width: 720px) {
-		.social-links {
-			display: none;
-		}
-	}
+  h2 a,
+  h2 a.active {
+    text-decoration: none;
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .internal-links a {
+    padding-left: 0.5em;
+    color: var(--gray-light);
+    /* border-bottom: 4px solid transparent;*/
+    text-decoration: none;
+  }
+  .internal-links a.active {
+    text-decoration: none;
+    color: var(--gray-dark);
+    font-weight: 600;
+  }
+  .social-links,
+  .social-links a {
+    display: flex;
+    padding-right: 0.2em;
+  }
+  @media (max-width: 720px) {
+    .social-links {
+      display: none;
+    }
+  }
 </style>
