@@ -5,9 +5,9 @@
  */
 
 :root {
-  --accent: #2337ff;
-  --accent-dark: #000d8a;
-  --accent-light: 8 145 178;
+  --accent: #519075;
+  --accent-dark: #40543B;
+  --accent-light: #9BAF97;
   --black: 15, 18, 25;
   --gray: 128, 128, 128;
   --gray-light: #b9b9b9;
@@ -65,6 +65,7 @@ b {
 }
 a {
   color: var(--accent);
+  text-decoration: underline;
 }
 a:hover {
   color: var(--accent);
