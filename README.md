@@ -10,7 +10,13 @@ npm i
 
 ## Develop
 
+Setup Rust and npm
+
+Then
+
 ```sh
+cargo install rsw
+cargo install wasm-pack
 npm run dev
 ```
 

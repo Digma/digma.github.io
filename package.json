@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "Gael.io",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -7,7 +7,10 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "dev:rsw": "concurrently 'rsw watch' 'astro dev'",
+    "build:rsw": "rsw build && astro build",
+    "rsw": "rsw"
   },
   "dependencies": {
     "@astrojs/check": "^0.3.2",
@@ -25,7 +28,9 @@
     "typescript": "^5.3.3"
   },
   "devDependencies": {
+    "concurrently": "^8.2.2",
     "prettier": "^3.1.1",
-    "prettier-plugin-astro": "^0.12.2"
+    "prettier-plugin-astro": "^0.12.2",
+    "vite-plugin-rsw": "^2.0.11"
   }
 }
