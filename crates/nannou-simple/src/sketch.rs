@@ -1,8 +1,44 @@
 use nannou::prelude::*;
+use nannou_egui::{egui, Egui};
 use nannou::wgpu::{Backends, DeviceDescriptor, Limits};
 use std::cell::RefCell;
 
-pub struct Model;
+
+pub struct Model {
+    settings: Settings,
+    egui: Egui,
+}
+
+struct Settings {
+    sigma: f32,
+}
+
+pub fn Model(app: &App) -> Model {
+	let window = app.window(window_id).unwrap();
+    let egui = Egui::from_window(&window);
+    let settings = Settings {
+        sigma: 128.0,
+    };
+
+
+    Model { settings, egui}
+}
+
+fn raw_window_event(_app: &App, model: &mut Model, event: &nannou::winit::event::WindowEvent) {
+    model.egui.handle_raw_event(event);
+    if let nannou::winit::event::WindowEvent::MouseWheel { delta, .. } = event {
+        let cursor_over_egui = model.egui.ctx().wants_pointer_input();
+        // if !cursor_over_egui {
+        //     match delta {
+        //         nannou::winit::event::MouseScrollDelta::LineDelta(_, y) => {
+        //             model.scale *= 1.0 + *y * 0.05;
+        //             model.scale = model.scale.max(0.1).min(10.0);
+        //         }
+        //         _ => (),
+        //     }
+        // }
+    }
+}
 
 fn update(_app: &App, _model: &mut Model, _update: Update) {}
 
@@ -13,7 +49,8 @@ fn view(app: &App, _model: &Model, frame: Frame) {
     draw.to_frame(app, &frame).unwrap();
 }
 
-pub async fn run_app(model: Model) {
+pub async fn run_app() {
+	let model = Model();
 	// Since ModelFn is not a closure we need this workaround to pass the calculated model
 	thread_local!(static MODEL: RefCell<Option<Model>> = Default::default());
 
@@ -45,7 +82,8 @@ async fn create_window(app: &App) {
 	app.new_window()
 		.device_descriptor(device_desc)
 		.title("Nannou Simple App")
-		// .raw_event(raw_event)
+		.size(512, 512)
+		.raw_event(raw_window_event)
 		// .key_pressed(key_pressed)
 		// .key_released(key_released)
 		// .mouse_pressed(mouse_pressed)

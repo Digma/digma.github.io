@@ -3,6 +3,7 @@
 ---
 
 <div />
+
 <script>
     await import(`../../crates/nannou-simple/pkg/nannou_simple.js`).then(
       async ({ default: nannou }) => {
@@ -11,4 +12,9 @@
         });
       },
     );
+
+    const rustiframe = document.getElementById('rustiframe');
+    if (rustiframe) {
+      rustiframe.src = rustiframe.src;
+    }
 </script>

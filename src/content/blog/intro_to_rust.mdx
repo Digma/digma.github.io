@@ -1,0 +1,66 @@
+---
+title: "Diving into Rust"
+description: "Building a 2D Aquarium"
+pubDate: "Dec 2023"
+heroImage: "/blog-placeholder-3.jpg"
+---
+
+export const title = 'Mon premier billet sur le MDX'
+
+# Diving into Rust: Building a 2D Aquarium with Nannou
+
+## Why Rust?
+Rust is quickly gaining popularity for high-performance applications, and I've been intrigued by its capabilities for a while. Known for its safety and speed, Rust is an exciting language to explore, especially for projects where performance is key. As a data scientist with a background in Python, I am always eager to expand my technical toolkit. Inspired by the "Coding Adventure" videos on YouTube, I decided to dive into Rust by coding a simple 2D aquarium. This project seemed like a perfect combination of performance needs and visual appeal.
+
+## Getting Started with Rust
+Before diving into the coding part, it's essential to understand the basics of Rust. To start, I installed Rust, which comes with Cargo, its package manager and build system. Cargo is a powerful tool that handles a lot of tasks, like building your code, downloading the libraries your code depends on (called "crates"), and running your programs.
+
+A typical Rust project has a Cargo.toml file at its root, which is like a recipe for your application. It lists your dependencies and other metadata. The source code goes into the src directory, with main.rs being the entry point for most programs.
+
+## Enter Nannou: The Creative Coding Framework
+For the visual aspect of the aquarium, I chose Nannou, a creative coding framework specifically for Rust. Nannou makes it easy to create 2D and 3D visuals and is designed with simplicity and performance in mind. It abstracts away many complexities, allowing artists and developers to focus more on the creative side of coding.
+
+## Boid Logic: Simulating Fish Behavior
+The heart of my 2D aquarium is the "Boid" algorithm, which simulates the flocking behavior of fish. Each boid (or fish) in the aquarium follows simple rules:
+
+Collision Avoidance: Steer to avoid bumping into other boids.
+Velocity Matching: Align velocity with nearby boids.
+Flock Centering: Move towards the center of mass of nearby boids.
+These behaviors are implemented through various functions like collision_avoidance, velocity_matching, and flock_centering. The update method in the Boid struct applies these behaviors to adjust each boid's position and velocity over time.
+
+```rust
+Copy code
+impl Boid {
+    // ... Boid implementation ...
+}
+```
+<br />
+
+## Nannou Application Structure
+The Nannou application is structured with the main components:
+
+Model: Represents the state of the application, including the boids.
+Update: Function to update the state of the model over time.
+View: Renders the model to the window.
+The application creates a number of boids, randomly placed in the window. Each boid is given a random initial velocity. The update function adjusts the boids' positions and velocities based on the boid algorithm. The view function then draws the boids on the screen.
+
+
+```rust
+Copy code
+fn main() {
+    // ... Nannou application setup ...
+}
+```
+<br />
+
+## The result
+
+<iframe id="rustiframe" class="w-[512px] h-[512px]" src="../../nannousimple" />
+
+## Final Thoughts
+Working with Rust has been both challenging and rewarding. The strong type guarantees and the ability to have tests alongside code are significant advantages. However, reading existing Rust code can be daunting at first, and it requires some time to get used to the syntax and concepts.
+
+The integration with WebAssembly (WASM) is another aspect of Rust that excites me, offering possibilities for high-performance web applications.
+
+In conclusion, my journey into Rust with this simple 2D aquarium project has been a delightful learning experience. It's a language that demands a bit more at the beginning but offers robustness and performance that are hard to match. For anyone looking to enhance their programming skills and explore new territories, Rust is definitely worth considering!
+
