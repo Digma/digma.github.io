@@ -5,8 +5,9 @@ pubDate: "10 Jan 2024"
 heroImage: "/blog/aws_lambda_bearer_token_auth/aws_lamba_token_overview.png"
 readingTime: 5
 ---
-import { Image } from 'astro:assets';
-import architecture from '/public/blog/aws_lambda_bearer_token_auth/architecture_overview.png';
+
+import { Image } from "astro:assets";
+import architecture from "/public/blog/aws_lambda_bearer_token_auth/architecture_overview.png";
 
 AWS Lambda makes it very easy to deploy almost any type of code including python code. If you have low (as it might be when starting out) or bursty usage, it offers a great and cost-efficient solution to quickly develop new solutions.
 
@@ -22,10 +23,10 @@ In this article, we will look into how to setup the first option: a token-based 
 
 ## What You'll Need
 
-* AWS account
-* Basic understanding of AWS services
-* An existing AWS Lambda that you want to protect
-* An existing AWS API Gateway
+- AWS account
+- Basic understanding of AWS services
+- An existing AWS Lambda that you want to protect
+- An existing AWS API Gateway
 
 ## Step 1: Setting Up Your AWS Lambda Authorizer
 
@@ -37,26 +38,28 @@ To get started:
 Use the following code. Please change the secret token to your own secret token:
 
 ```javascript
-export const handler = async(event) => {    
-    const token = event.headers && event.headers.authorization ? event.headers.authorization.replace('Bearer ', '') : "";
-    
-    if (token === "YOUR_SECRET_TOKEN") {
-        return {
-            "isAuthorized": true,
-            "context": {
-               // Put additional content here if desired
-            }
-        };
-    } else {
-        return {
-        "isAuthorized": false,
-        "context": {
-             // Put additional content here if desired
-        }
-        };
-    }
-    return response;
+export const handler = async (event) => {
+  const token =
+    event.headers && event.headers.authorization
+      ? event.headers.authorization.replace("Bearer ", "")
+      : "";
 
+  if (token === "YOUR_SECRET_TOKEN") {
+    return {
+      isAuthorized: true,
+      context: {
+        // Put additional content here if desired
+      },
+    };
+  } else {
+    return {
+      isAuthorized: false,
+      context: {
+        // Put additional content here if desired
+      },
+    };
+  }
+  return response;
 };
 ```
 
@@ -86,7 +89,11 @@ That means that the Lambda function is working as expected.
 
 We will configure the following setup where the Lambda authorizer is used to protect the Lambda function:
 
-<Image src={architecture} alt="An AWS architecture showing AWS Lambda and AWS Gateway" height="300px" />
+<Image
+  src={architecture}
+  alt="An AWS architecture showing AWS Lambda and AWS Gateway"
+  height="300px"
+/>
 
 Here are the steps:
 
