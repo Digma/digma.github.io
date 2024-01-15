@@ -7,7 +7,7 @@ import { getCollection } from "astro:content";
 import FormattedDate from "../../components/FormattedDate.astro";
 
 const posts = (await getCollection("products")).sort(
-  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 ---
 
@@ -17,22 +17,19 @@ const posts = (await getCollection("products")).sort(
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
     <style>
       main {
-        width: 720px;
-        max-width: calc(80%);
-        margin: auto;
       }
       ul {
         display: flex;
         flex-wrap: wrap;
-        gap: 2rem;
-        list-style-type: auto;
+        gap: 4rem;
+        list-style-type: none;
       }
       ul li {
         width: calc(50% - 1rem);
       }
       ul li * {
         transition: 0.2s ease;
-        list-style-type: auto;
+        list-style-type: none;
       }
       ul li:first-child {
         width: 100%;
@@ -53,7 +50,7 @@ const posts = (await getCollection("products")).sort(
         display: block;
       }
       .title {
-        margin: 0;
+        margin: 1rem 0 0.5rem 0;
         color: rgb(var(--black));
         line-height: 1;
       }
@@ -63,7 +60,7 @@ const posts = (await getCollection("products")).sort(
       }
       ul li a:hover h4,
       ul li a:hover .date {
-        color: rgb(var(--accent));
+        color: rgb(var(--gray-dark));
       }
       ul a:hover img {
         box-shadow: var(--box-shadow);

@@ -17,7 +17,6 @@
     0 8px 24px rgba(var(--gray), 33%), 0 16px 32px rgba(var(--gray), 33%);
 }
 body {
-  font-family: "Outfit", sans-serif;
   margin: 0;
   padding: 0;
   text-align: left;
@@ -30,7 +29,7 @@ body {
   line-height: 1.7;
 }
 main {
-  width: 720px;
+  width: 1024px;
   max-width: calc(80%);
   margin: auto;
 }
@@ -64,17 +63,13 @@ b {
   font-weight: 700;
 }
 a {
-  color: var(--accent);
-  text-decoration: underline;
+  color: var(--gray-dark);
 }
 a:hover {
-  color: var(--accent);
+  color: var(--gray-dark);
 }
 p {
   margin-bottom: 1em;
-}
-.prose p {
-  margin-bottom: 2em;
 }
 textarea {
   width: 100%;

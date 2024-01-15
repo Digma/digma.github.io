@@ -16,9 +16,6 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
     <BaseHead title={title} description={description} />
     <style>
       main {
-        width: 720px;
-        max-width: calc(80%);
-        margin: auto;
       }
       .hero-image {
         width: 100%;
@@ -34,13 +31,20 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
         padding: 1em;
         color: rgb(var(--gray-dark));
       }
+      .prose ul {
+        list-style: auto;
+      }
       .title {
-        margin-bottom: 1em;
         padding: 1em 0;
-        line-height: 1;
       }
       .title h1 {
-        margin: 0 0 0.5em 0;
+      }
+      h1 {
+        margin: 3rem 0 1.5rem 0;
+      }
+      img {
+        margin: auto;
+        margin-top: 3rem;
       }
       .date {
         margin-bottom: 0.5em;
@@ -54,7 +58,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 
   <body>
     <Header />
-    <main>
+    <main class="font-blog">
       <article>
         <div class="hero-image">
           {
@@ -75,8 +79,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
                 )
               }
             </div>
-            <h1>{title}</h1>
-            <hr />
+            <h1 class="text-5xl text-bold">{title}</h1>
           </div>
           <slot />
         </div>
