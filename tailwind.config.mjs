@@ -1,11 +1,20 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
-    "./node_modules/flowbite/**/*.js",
-  ],
+  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        resume: ["Outfit", "Open sans", "sans-serif"],
+        blog: ["Open sans", "sans-serif"],
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: "860px",
+          },
+        },
+      },
+    },
   },
-  plugins: [require("flowbite/plugin")],
+  plugins: [require("@tailwindcss/typography")],
 };

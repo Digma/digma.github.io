@@ -1,0 +1,95 @@
+---
+title: "DataViz Mentor - Enhance your Data Visualizations"
+description: "Announcing DataViz Mentor, a GPT-powered tool to improve your Data Visualizations."
+pubDate: "15 Jan 2024"
+heroImage: "/products/dataviz_mentor_overview.png"
+readingTime: 8
+---
+
+import { Image } from "astro:assets";
+import datavizMentorUI from "/public/blog/dataviz_mentor_announcement/dataviz_mentor_ui.png";
+import theEconomistChart1 from "/public/blog/dataviz_mentor_announcement/the_economist_chart_1.png";
+import theEconomistChart2 from "/public/blog/dataviz_mentor_announcement/the_economist_chart_2.webp";
+import datavizMentorChart1 from "/public/blog/dataviz_mentor_announcement/dataviz_mentor_chart_1.png";
+import datavizMentorChart2 from "/public/blog/dataviz_mentor_announcement/dataviz_mentor_chart_2.png";
+
+Following the launch of the GPT Store, I have been exploring the potential of GPTs. I am excited to announce the release of my first GPT called [DataViz Mentor](https://chat.openai.com/g/g-rk1495Cu2-dataviz-mentor). It is now available for free to all ChatGPT Plus subscribers who want to improve their data visualizations.
+
+## Enhance your Presentations and Data Visualizations with DataViz Mentor
+
+Creating quality data visualizations often requires significant time and expertise. DataViz Mentor aims to simplify this process. It serves as an assistant or "mentor," offering immediate feedback on your visualizations. It guides you with prioritized improvements that can be made to any data visualization or plot.
+
+To use DataViz Mentor, vist the [ChatGPT interface](https://chat.openai.com/g/g-rk1495Cu2-dataviz-mentor) and follow these steps:
+
+1. Upload an image of your plot.
+2. Receive prioritized recommendations for improvement.
+
+<Image
+  src={datavizMentorUI}
+  alt="A view of the DataViz Mentor interface using ChatGPT"
+/>
+
+## How It Works
+
+The recommendations are derived from my work compiling books, blog posts, and other resources into a methodology for assessing data visualizations. I have gathered and summarized common mistakes, as well as providing recommendations to fix them. The system uses this knowledge for its assessments.
+
+Utilizing GPT-4 turbo's language and vision capabilities, the system is then able to combine its knowledge with the uploaded image to provide guided recommendations.
+
+I will share more details on creating and publishing such a GPT in a future blog post (Stay tuned 😊)
+
+## Real-world Examples
+
+To evaluate the system, we'll examine if it aligns with some of The Economist's suggestions. In a [Medium blog post](https://medium.economist.com/mistakes-weve-drawn-a-few-8cdd8a42d368), journalist Sarah Leo from The Economist discusses some past mistakes they've made. They showcase the initial visualization and the improved version. Let's see if DataViz Mentor agrees with their recommendations.
+
+### Example 1: Recommending splitting the chart into 2
+
+The first example from The Economist is as follows:
+
+<Image
+  src={theEconomistChart1}
+  alt="A chart comparison from The Economist displaying a combination of bar and line chart"
+  width="600px"
+/>
+
+Below are DataViz Mentor's recommendations (for the left plot):
+
+<Image
+  src={datavizMentorChart1}
+  alt="Recommendations from DataViz Mentor to split the visualization into bar and line chart"
+  width="600px"
+/>
+
+The mentor agrees with The Economist, and its first recommendation suggests using two separate visualizations, as recommended by The Economist author.
+
+### Example 2: Recommending reworking the axes
+
+In another example from The Economist, this time looking at the correlation between 2 variables:
+
+<Image
+  src={theEconomistChart2}
+  alt="A chart comparison from The Economist displaying 2 lines with different y-axes"
+  width="600px"
+/>
+
+Similarly, here are DataViz Mentor's recommendations for the first (left) plot:
+
+<Image
+  src={datavizMentorChart2}
+  alt="Recommendations from DataViz Mentor to rework the y-axis"
+  width="600px"
+/>
+
+It points out the misleading y-axis and suggests alterations, along with subtle changes in color and font size, matching the recommendations and the updated version.
+
+## Improvements and Future Plans
+
+Although the initial version is already quite helpful, the system is the first iteration and is not (yet) perfect. Some of the improvements I am planning to work on are:
+
+- **Helping you implement the recommended changes in your data visualization software or framework**: Assisting you in easily modifying your original plot is very important. This is a difficult challenge given the variety of tools available today, but an important one to tackle.
+- **Improving the vision and recommendations**: While the system generally offers solid recommendations, it might occasionally miss or misunderstand certain plot elements.
+
+## I need your help!
+
+While I have some ideas on how to improve the system, they are just that: ideas. I need your help to turn them into actionable improvements.
+
+If you have any feedback or impressions, please reach out. Finally, if you're interested in data visualization or GPTs, let's connect and chat about the topic!

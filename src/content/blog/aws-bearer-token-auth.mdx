@@ -1,0 +1,128 @@
+---
+title: "Setting Up AWS Lambda with Bearer Token Authentication using AWS API Gateway"
+description: "How to set up token-based authentication with AWS Lambda"
+pubDate: "10 Jan 2024"
+heroImage: "/blog/aws_lambda_bearer_token_auth/aws_lamba_token_overview.png"
+readingTime: 5
+---
+
+import { Image } from "astro:assets";
+import architecture from "/public/blog/aws_lambda_bearer_token_auth/architecture_overview.png";
+
+AWS Lambda makes it very easy to deploy almost any type of code including python code. If you have low (as it might be when starting out) or bursty usage, it offers a great and cost-efficient solution to quickly develop new solutions.
+
+Of course, unless you are developing a public API, you will need to secure your API. A common method for this is using the AWS API Gateway which can be configured to use a Lambda function to authenticate the user with a "Lambda authorizer".
+
+There are two types of Lambda authorizers:
+
+1. A token-based Lambda authorizer such as a bearer token
+
+2. A request parameter-based Lambda authorizer
+
+In this article, we will look into how to setup the first option: a token-based Lambda authorizer.
+
+## What You'll Need
+
+- AWS account
+- Basic understanding of AWS services
+- An existing AWS Lambda that you want to protect
+- An existing AWS API Gateway
+
+## Step 1: Setting Up Your AWS Lambda Authorizer
+
+To get started:
+
+1. Navigate to AWS Lambda.
+2. Create a new Lambda function. Choose 'Author from scratch', and select Node as your runtime.
+
+Use the following code. Please change the secret token to your own secret token:
+
+```javascript
+export const handler = async (event) => {
+  const token =
+    event.headers && event.headers.authorization
+      ? event.headers.authorization.replace("Bearer ", "")
+      : "";
+
+  if (token === "YOUR_SECRET_TOKEN") {
+    return {
+      isAuthorized: true,
+      context: {
+        // Put additional content here if desired
+      },
+    };
+  } else {
+    return {
+      isAuthorized: false,
+      context: {
+        // Put additional content here if desired
+      },
+    };
+  }
+  return response;
+};
+```
+
+And create a test event with:
+
+```json
+{
+  "header": {
+    "Authorization": "Bearer YOUR_SECRET_TOKEN",
+    "Content-Type": "application/json"
+  }
+}
+```
+
+If the test is successful, you should see the following output:
+
+```json
+{
+  "isAuthorized": true,
+  "context": {}
+}
+```
+
+That means that the Lambda function is working as expected.
+
+## Step 2: Configuring AWS API Gateway with Lambda Authorizer
+
+We will configure the following setup where the Lambda authorizer is used to protect the Lambda function:
+
+<Image
+  src={architecture}
+  alt="An AWS architecture showing AWS Lambda and AWS Gateway"
+  height="300px"
+/>
+
+Here are the steps:
+
+1. Navigate to AWS API Gateway.
+2. Select your API (HTTP).
+3. Go to 'Authorizers' and select "Create authorizer"
+
+Configure it with the following settings:
+
+```text
+Authorizer Type = Lambda
+Lambda Function = {Select the Lambda function you created in step 1}
+```
+
+And leave the rest as default:
+
+```text
+Lambda Event Payload   = Token
+Payload Format Version = 2.0
+Response Mode          = Simple
+Identity Sources       = "$request.header.Authorization"
+```
+
+## Step 3: Test and enjoy
+
+That's it, you have now set up a token-based Lambda authorizer for your AWS Gateway. You should be able to test accessing your protected endpoint in Postman or with a curl request:
+
+```bash
+curl --location 'https://{your_lambda_link}.amazonaws.com/{your_endpoint}' \
+--header 'Authorization: Bearer secretToken' \
+--data ''
+```

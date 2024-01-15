@@ -13,6 +13,13 @@ yarn-error.log*
 pnpm-debug.log*
 
 
+# WASM
+target
+.rsw
+crates/*/pkg/
+crates/*/target/
+crates/*/.vscode
+
 # environment variables
 .env
 .env.production

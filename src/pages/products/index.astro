@@ -6,9 +6,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
 import { getCollection } from "astro:content";
 import FormattedDate from "../../components/FormattedDate.astro";
 
-import { Icon } from "astro-icon";
-
-const posts = (await getCollection("blog")).sort(
+const posts = (await getCollection("products")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 ---
@@ -25,14 +23,13 @@ const posts = (await getCollection("blog")).sort(
         flex-wrap: wrap;
         gap: 4rem;
         list-style-type: none;
-        margin: 0;
       }
       ul li {
         width: calc(50% - 1rem);
       }
       ul li * {
-        text-decoration: none;
         transition: 0.2s ease;
+        list-style-type: none;
       }
       ul li:first-child {
         width: 100%;
@@ -42,8 +39,8 @@ const posts = (await getCollection("blog")).sort(
       ul li:first-child img {
         width: 100%;
       }
-      ul li:first-child .infos {
-        justify-content: center;
+      ul li:first-child .title {
+        font-size: 2.369rem;
       }
       ul li img {
         margin-bottom: 0.5rem;
@@ -93,7 +90,7 @@ const posts = (await getCollection("blog")).sort(
           {
             posts.map((post) => (
               <li>
-                <a href={`/blog/${post.slug}/`}>
+                <a href={`/products/${post.slug}/`}>
                   <img
                     width={720}
                     height={360}
@@ -101,19 +98,9 @@ const posts = (await getCollection("blog")).sort(
                     alt=""
                   />
                   <h4 class="title">{post.data.title}</h4>
-                  <div class="infos flex flex-row gap-4">
-                    <p class="date">
-                      <FormattedDate date={post.data.pubDate} />
-                    </p>
-                    <p class="mb-0 ml-4">
-                      <Icon
-                        class="h-[1rem] inline mt-[-0.2rem] ml-[-0.2rem] mr-[0.2rem]"
-                        pack="mdi"
-                        name="clock-time-one"
-                      />
-                      {post.data.readingTime} min.
-                    </p>
-                  </div>
+                  <p class="date">
+                    <FormattedDate date={post.data.pubDate} />
+                  </p>
                 </a>
               </li>
             ))
