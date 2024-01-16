@@ -69,12 +69,12 @@ const posts = (await getCollection("blog")).sort(
         box-shadow: var(--box-shadow);
       }
       @media (max-width: 720px) {
-        ul {
-          gap: 0.5em;
-        }
         ul li {
           width: 100%;
           text-align: center;
+        }
+        ul li .infos {
+          justify-content: center;
         }
         ul li:first-child {
           margin-bottom: 0;
