@@ -6,10 +6,14 @@ const blog = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
+    author: z.string(),
     // Transform string to Date object
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
-    heroImage: z.string().optional(),
+    heroImage: z.object({
+      url: z.string().optional(),
+      alt: z.string().optional(),
+    }),
     readingTime: z.number().optional(),
   }),
 });
@@ -19,10 +23,14 @@ const products = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
+    author: z.string(),
     // Transform string to Date object
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
-    heroImage: z.string().optional(),
+    heroImage: z.object({
+      url: z.string().optional(),
+      alt: z.string().optional(),
+    }),
   }),
 });
 

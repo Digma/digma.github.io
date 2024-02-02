@@ -94,8 +94,8 @@ const posts = (await getCollection("products")).sort(
                   <img
                     width={720}
                     height={360}
-                    src={post.data.heroImage}
-                    alt=""
+                    src={post.data.heroImage.url}
+                    alt={post.data.heroImage.alt}
                   />
                   <h4 class="title">{post.data.title}</h4>
                   <p class="date">
