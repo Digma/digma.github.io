@@ -8,7 +8,7 @@ import "@fontsource/outfit";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, author, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
 <html lang="en">
@@ -27,27 +27,17 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
         box-shadow: var(--box-shadow);
       }
       .prose {
-        margin: auto;
-        padding: 1em;
+        width: 100%;
         color: rgb(var(--gray-dark));
       }
       .prose ul {
         list-style: auto;
-      }
-      .title {
-        padding: 1em 0;
-      }
-      .title h1 {
-      }
-      h1 {
-        margin: 3rem 0 1.5rem 0;
       }
       img {
         margin: auto;
         margin-top: 3rem;
       }
       .date {
-        margin-bottom: 0.5em;
         color: rgb(var(--gray));
       }
       .last-updated-on {
@@ -58,28 +48,34 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 
   <body>
     <Header />
-    <main class="font-blog">
-      <article>
+    <main class="font-blog max-w-[860px] w-[calc(80%)]">
+      <article class="">
         <div class="hero-image">
           {
             heroImage && (
-              <img width={1020} height={510} src={heroImage} alt="" />
+              <img width={1024} height={510} src={heroImage.url} alt={heroImage.alt} />
             )
           }
         </div>
         <div class="prose">
-          <div class="title">
-            <div class="date">
-              <FormattedDate date={pubDate} />
-              {
-                updatedDate && (
-                  <div class="last-updated-on">
-                    Last updated on <FormattedDate date={updatedDate} />
-                  </div>
-                )
-              }
+          <div class="title mb-8">
+            <h1 class="text-5xl text-bold mt-16 mb-0">{title}</h1>
+            <div class = "flex flex-row gap-4 mb-12">
+              <p class="text-gray-500 font-semibold">{author}</p>
+              <p>/</p>
+              <p class="date italic">
+                <FormattedDate date={pubDate} />
+              </p>
+                {
+                  updatedDate && (
+                    <p>-</p>
+                    <p class="date last-updated-on">
+                      Last updated on <FormattedDate date={updatedDate} />
+                    </p>
+                  )
+                }
+              </div>
             </div>
-            <h1 class="text-5xl text-bold">{title}</h1>
           </div>
           <slot />
         </div>
