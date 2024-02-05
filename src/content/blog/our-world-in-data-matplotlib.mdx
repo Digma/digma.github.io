@@ -1,30 +1,30 @@
 ---
 title: "Beautiful Line Charts with Matplotlib: Lessons from OurWorldInData"
-description: "In this article, we will reproduce a Line Chart from OurWorldInData. We will transform a matplotlib (or seaborn) plot into an engaging visualization by drawing inspiration from OurWorldInData."
+description: "In this article, we will reproduce a Line Chart from OurWorldInData. We will transform a Matplotlib (or Seaborn) plot into an engaging visualization by drawing inspiration from OurWorldInData."
 author: "Gaël Grosch"
 pubDate: "5 Feb 2024"
 heroImage:
-    url: "/blog/our_world_in_data_matplotlib_line_chart/our-world-in-data-matplotlib-header.png"
-    alt: "An image of 2 plots, one showing a basic matplotlib line plot and our final result resembling OurWorldInData."
+    url: "/blog/our_world_in_data_Matplotlib_line_chart/our-world-in-data-Matplotlib-header.png"
+    alt: "An image of 2 plots, one showing a basic Matplotlib line plot and our final result resembling OurWorldInData."
 readingTime: 5
-tags: ["OurWorldInData", "Matplotlib", "seaborn", "data visualization"]
+tags: ["OurWorldInData", "Matplotlib", "Seaborn", "data visualization"]
 ---
 
 import { Image } from "astro:assets";
-import MatplotlibBaseLineChart from "../../images/our-world-in-data-base-matplotlib-plot.png";
-import MatplotlibHeaderChart from "../../images/our-world-in-data-matplotlib-with-headers-plot.png";
-import MatplotlibAxesChart from "../../images/our-world-in-data-matplotlib-with-axes-plot.png";
-import MatplotlibLineChart from "../../images/our-world-in-data-matplotlib-with-lines-plot.png";
-import MatplotlibFinalChart from "../../images/our-world-in-data-matplotlib-final-plot.png";
-import BeforeAfterResultChart from "/public/blog/our_world_in_data_matplotlib_line_chart/our-world-in-data-before-after.png";
+import MatplotlibBaseLineChart from "../../images/our-world-in-data-base-Matplotlib-plot.png";
+import MatplotlibHeaderChart from "../../images/our-world-in-data-Matplotlib-with-headers-plot.png";
+import MatplotlibAxesChart from "../../images/our-world-in-data-Matplotlib-with-axes-plot.png";
+import MatplotlibLineChart from "../../images/our-world-in-data-Matplotlib-with-lines-plot.png";
+import MatplotlibFinalChart from "../../images/our-world-in-data-Matplotlib-final-plot.png";
+import BeforeAfterResultChart from "/public/blog/our_world_in_data_Matplotlib_line_chart/our-world-in-data-before-after.png";
 
 import OurWorldInDataLineChart from "../../images/our-world-in-data-ghg-emissions-by-sector.svg";
 
-In this series, we aim to transform matplotlib and seaborn plots into engaging data visualizations. We draw inspiration from leading data journalism platforms and online data-driven websites, such as The Economist, The Guardian, and other distinguished sources.
+In this series, we aim to transform Matplotlib and Seaborn plots into engaging data visualizations. We draw inspiration from leading data journalism newspapers and online data-driven websites, such as The Economist, The Guardian, and others.
 
-Today, we will focus on [**OurWorldInData**](https://ourworldindata.org/), a platform that provides comprehensive and accessible data on global development. OurWorldInData is known for its clean and impactful visual style, which we aim to replicate in our matplotlib visualizations.
+Today, we will focus on [**OurWorldInData**](https://ourworldindata.org/), a platform that provides comprehensive and accessible data on global development. OurWorldInData is known for its clean and impactful visual style, which we aim to replicate in our Matplotlib visualizations.
 
-In this article, we will reproduce using **matplotlib** a [Line Chart showcasing Global Greenhouse Gas emissions by sector](https://ourworldindata.org/grapher/ghg-emissions-by-sector):
+In this article, we will reproduce using **Matplotlib** a [Line Chart of Global Greenhouse Gas Emissions by Sector](https://ourworldindata.org/grapher/ghg-emissions-by-sector):
 
 <Image src={OurWorldInDataLineChart} alt="Line chart from Our World In Data displaying Greenhouse gas emissions by sector" height="500px"/>
 
@@ -32,24 +32,24 @@ Let's get to work 🧑‍💻
 
 ## Loading the data with Matplotlib
 
-Matplotlib default charts are functional but not always engaging. They often lack visual appeal and can easily distract a non-technical user. After having loaded the [data](https://ourworldindata.org/grapher/ghg-emissions-by-sector) with pandas (code [here](https://gist.github.com/Digma/b91db287f8f577fae41c406892d46b15#file-ourworldindata_ghg_pandas-py)). Here is the default matplotlib line chart for our dataset:
+Matplotlib default charts are functional but not always engaging. They often lack visual appeal and can easily distract a non-technical user. After having loaded the [data](https://ourworldindata.org/grapher/ghg-emissions-by-sector) with pandas (code [here](https://gist.github.com/Digma/b91db287f8f577fae41c406892d46b15#file-ourworldindata_ghg_pandas-py)). Here is the default Matplotlib line chart for our dataset:
 
 <Image src={MatplotlibBaseLineChart} alt="Base Matplotlib line chart using Our World In Data Greenhouse gas emissions by sector dataset" height="400px"/>
 
-That is maybe functional but we have a lot of work to do to make our plot look like OurWorldInData. Let's start by breaking down the key elements and the steps we need to take to replicate them:
+As one can see, we have a lot of work to do to make our plot look like OurWorldInData. Let's start by breaking down the key elements and the steps we need to take to accurately replicate these elements:
 
 1. **Headings and sources**: The original figure contains various elements that give context to the plot such as the title, subtitle, and sources. We will need to add these elements to our plot.
 2. **Chart Axes**: The original figure has a clean and minimalistic look. It has removed various elements and made extensive use of grey to minimize distractions.
-3. **Data Series**: Each data series is plotted with a unique color and annotations at the end of each line offer direct identification of each series, eliminating the need for a separate legend.
+3. **Data Series**: Each individual data series is plotted with a unique color and annotations at the end of each line offer direct identification of each series, eliminating the need for a separate legend.
 
-Let's see how we can achieve these elements in our plot with matplotlib.
+Let's see how we can achieve these elements in our plot with Matplotlib.
 
-### Improvement #1: Enhancing Headings and Sources
+### Improvement #1: Adding Headings and Sources
 
-To replicate the detailed context provided by OurWorldInData, we start by adding a title, subtitle, and source information to our matplotlib plot. Although this can be also be done using the text and suptitle functions, we use `fig.text` for precise positioning and styling.
+To replicate the detailed context provided by OurWorldInData, we start by adding a title, subtitle, and source information to our Matplotlib plot. Although this can be also be done using the text and suptitle functions, we use `fig.text` for exact positioning and detailed styling.
 
 ```python
-# Shades of gray
+# Defining a palette of shades of gray (do not worry there is not 50 of them)
 GREY10 = "#1a1a1a"
 GREY30 = "#4d4d4d"
 GREY40 = "#666666"
@@ -85,11 +85,11 @@ Which generates the following plot:
 <Image src={MatplotlibHeaderChart} alt="Matplotlib line chart with headers modified using Our World In Data Greenhouse gas emissions by sector dataset" height="400px"/>
 
 
-In matplotlib, the placement of the text is tedious and requires trial and error to ensure that the elements are aligned and spaced correctly. Make sure you have the right plot size before starting to place the text.
+In Matplotlib, the placement of the text is tedious and requires trial and error to ensure that the elements are aligned and spaced correctly. Make sure you have the right plot size before starting to place the text.
 
-### Improvement #2: Customizing Chart Axes
+### Improvement #2: Replicating Chart Axes
 
-To achieve the minimalistic look of the OurWorldInData chart, we'll modify the axes of our matplotlib plot. This includes many settings such as background color, hiding specific spines, and using grey for grid lines and tick labels:
+To achieve the minimalistic aesthetic of the OurWorldInData chart, we'll modify the axes of our Matplotlib plot. This includes many settings such as background color, hiding specific spines, and using grey for grid lines and tick labels:
 
 ```python
 # Manually set axes range
@@ -140,9 +140,9 @@ Notice the following:
 * The different greys minimize distractions, ensuring that attention remains focused on the crucial elements of the plot.
 
 
-### Improvement #3: Highlighting Data Series
+### Improvement #3: Adding colored Data Series and annotations
 
-Finally, we will replicate the line plots and annotations in the OurWorldInData. To do that, we will create the line plot and add the annotations and arrow for each series.
+Finally, we will replicate the line plots and annotations similar to those in our OurWorldInData's chart. To do that, we will create the line plot and add the annotations and arrow for each series.
 
 ```python
 # OurWorldInData color palette
@@ -193,15 +193,14 @@ Resulting in the following plot:
 
 <Image src={MatplotlibLineChart} alt="Matplotlib line chart with lines and annotations modified using Our World In Data Greenhouse gas emissions by sector dataset" height="400px"/>
 
-Please note the use of `clip_on=False` in the plot method to ensure that the lines extend beyond the axis limits, allowing the arrows to be placed at the end of each line. It is also used to prevent matplotlib from clipping the rounded markers at the start and end of each line.
+Please note:
+* the use of `clip_on=False` in the plot method to ensure that the lines extend beyond the axis limits, allowing the arrows to be placed at the end of each line. It is also used to prevent Matplotlib from clipping the rounded markers at the start and end of each line.
 
-We are getting very close to the OurWorldInData line chart. However, we still have some work to do to make our plot look like the original:
+We are getting very close to the OurWorldInData line chart. However, the annotations are overlapping which makes it difficult to read the names of the series. We will address this in the next section.
 
-* One issue with matplotlib is that it does not provide a straightforward way to add non-overlapping annotations to the end of each line. To address this, we can implement a custom function that adjusts the position of the annotation for each line.
+### Improvement #4: Fix overlapping annotations
 
-### Improvement #4: Avoid overlapping annotations
-
-For now, we will fix the overlapping manually by adjusting the y position manually and adjust the arrow and annotation. I will look into sharing code to automate it in the future but, for now, that will do:
+Matplotlib does not provide a straightforward way to add non-overlapping annotations. For now, we will fix the overlaps by manually adjusting the arrows and annotations. I will look into sharing code to automate it in the future but, for now, that will do:
 
 ```python
 y_offsets = [-0.1, 0.05, 0.3, -0.4, 0, 0, +0.1, 0, +0.4, -0.2, -0.1]
@@ -232,13 +231,12 @@ which generates our final plot:
 
 ## Results and learnings
 
-While the result is not perfect, we did get pretty close:
+While the result is not exact, we did get pretty close:
 
 <Image src={BeforeAfterResultChart} alt="Final Matplotlib line chart with our fixes using Our World In Data Greenhouse gas emissions by sector dataset" height="400px"/>
 
-Unfortunately I find, that it requires significant efforts. It is not always easy to navigate the matplotlib API and options. While the library is quite powerful, it can be challenging to achieve the desired visual style. In the next months, I will continue exploring how to make that easier, so follow or reach out to me if you are interested in this topic.
+While the library is quite powerful, it can be challenging and time-consuming to achieve the desired visual style. Navigating the Matplotlib API and options can often be challenging. In the next months, I will continue exploring how to make that easier, so please follow or reach out to me if you are interested in this topic.
 
 __Full Code source available on Github__: [OurWorldInData Line Chart with Matplotlib](https://gist.github.com/Digma/b91db287f8f577fae41c406892d46b15.js)
 
-Stay tuned for more articles in this series, where we will continue to explore and recreate various styles, further honing our skills in crafting beautiful data visualizations.
-
+Stay tuned for more articles in this series, where we will continue to explore and recreate various styles using Matplotlib, Seaborn, Plotly, or even ggplot.
