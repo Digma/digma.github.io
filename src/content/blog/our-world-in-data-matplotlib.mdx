@@ -2,21 +2,21 @@
 title: "Beautiful Line Charts with Matplotlib: Lessons from OurWorldInData"
 description: "In this article, we will reproduce a Line Chart from OurWorldInData. We will transform a Matplotlib (or Seaborn) plot into an engaging visualization by drawing inspiration from OurWorldInData."
 author: "Gaël Grosch"
-pubDate: "5 Feb 2024"
+pubDate: "6 Feb 2024"
 heroImage:
-    url: "/blog/our_world_in_data_Matplotlib_line_chart/our-world-in-data-Matplotlib-header.png"
+    url: "/blog/our_world_in_data_matplotlib_line_chart/our-world-in-data-matplotlib-header.png"
     alt: "An image of 2 plots, one showing a basic Matplotlib line plot and our final result resembling OurWorldInData."
 readingTime: 5
 tags: ["OurWorldInData", "Matplotlib", "Seaborn", "data visualization"]
 ---
 
 import { Image } from "astro:assets";
-import MatplotlibBaseLineChart from "../../images/our-world-in-data-base-Matplotlib-plot.png";
-import MatplotlibHeaderChart from "../../images/our-world-in-data-Matplotlib-with-headers-plot.png";
-import MatplotlibAxesChart from "../../images/our-world-in-data-Matplotlib-with-axes-plot.png";
-import MatplotlibLineChart from "../../images/our-world-in-data-Matplotlib-with-lines-plot.png";
-import MatplotlibFinalChart from "../../images/our-world-in-data-Matplotlib-final-plot.png";
-import BeforeAfterResultChart from "/public/blog/our_world_in_data_Matplotlib_line_chart/our-world-in-data-before-after.png";
+import MatplotlibBaseLineChart from "../../images/our-world-in-data-base-matplotlib-plot.png";
+import MatplotlibHeaderChart from "../../images/our-world-in-data-matplotlib-with-headers-plot.png";
+import MatplotlibAxesChart from "../../images/our-world-in-data-matplotlib-with-axes-plot.png";
+import MatplotlibLineChart from "../../images/our-world-in-data-matplotlib-with-lines-plot.png";
+import MatplotlibFinalChart from "../../images/our-world-in-data-matplotlib-final-plot.png";
+import BeforeAfterResultChart from "/public/blog/our_world_in_data_matplotlib_line_chart/our-world-in-data-before-after.png";
 
 import OurWorldInDataLineChart from "../../images/our-world-in-data-ghg-emissions-by-sector.svg";
 
@@ -24,9 +24,9 @@ In this series, we aim to transform Matplotlib and Seaborn plots into engaging d
 
 Today, we will focus on [**OurWorldInData**](https://ourworldindata.org/), a platform that provides comprehensive and accessible data on global development. OurWorldInData is known for its clean and impactful visual style, which we aim to replicate in our Matplotlib visualizations.
 
-In this article, we will reproduce using **Matplotlib** a [Line Chart of Global Greenhouse Gas Emissions by Sector](https://ourworldindata.org/grapher/ghg-emissions-by-sector):
+In this article, we will reproduce a [Line Chart of Global Greenhouse Gas Emissions by Sector](https://ourworldindata.org/grapher/ghg-emissions-by-sector) using **Matplotlib**:
 
-<Image src={OurWorldInDataLineChart} alt="Line chart from Our World In Data displaying Greenhouse gas emissions by sector" height="500px"/>
+<Image src={OurWorldInDataLineChart} alt="Line chart from Our World In Data displaying Greenhouse gas emissions by sector" height="400px"/>
 
 Let's get to work 🧑‍💻
 
@@ -227,7 +227,7 @@ ax.arrow(
 
 which generates our final plot:
 
-<Image src={MatplotlibFinalChart} alt="Final Matplotlib line chart with our fixes using Our World In Data Greenhouse gas emissions by sector dataset" height="500px"/>
+<Image src={MatplotlibFinalChart} alt="Final Matplotlib line chart with our fixes using Our World In Data Greenhouse gas emissions by sector dataset" height="400px"/>
 
 ## Results and learnings
 
